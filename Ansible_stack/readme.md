@@ -17,10 +17,10 @@ Here is an example of an Ansible role that installs the Apache web server:
 
 
 roles/apache:
-    ├── tasks:
-        │   └── main.yml
-    └── handlers:
-        └── restart_apache.yml
+     tasks:
+        ---- main.yml
+     handlers:
+        ---- restart_apache.yml
 
 
 The `tasks` directory contains the `main.yml` file, which contains the tasks that will be executed to install Apache. This file contains the following tasks:
@@ -83,9 +83,9 @@ To call an Ansible role, you must specify the role name in the `roles` section o
 
 
 playbooks
-├── playbook.yml
-└── roles
-    └── apache
+---playbook.yml
+----- roles
+      -----apache
 
 
 In this diagram, the `playbook.yml` playbook specifies that the `apache` role should be executed on all systems. The `apache` role contains the tasks and handlers necessary to install and configure the Apache web server.
