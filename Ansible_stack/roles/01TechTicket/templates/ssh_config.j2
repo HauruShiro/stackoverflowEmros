@@ -1,0 +1,43 @@
+Protocol 2
+ListenAddress 127.0.0.1
+ListenAddress 10.224.122.141
+SyslogFacility AUTHPRIV
+LogLevel VERBOSE
+PermitRootLogin no
+MaxAuthTries 3
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+AuthorizedKeysCommand /usr/bin/sss_ssh_authorizedkeys
+AuthorizedKeysCommandUser nobody
+HostbasedAuthentication no
+IgnoreRhosts yes
+PermitEmptyPasswords no
+PasswordAuthentication yes
+Ciphers=aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr
+MACs=hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,umac-128@openssh.com,hmac-sha2-512
+GSSAPIKexAlgorithms=gss-curve25519-sha256-,gss-nistp256-sha256-,gss-group14-sha256-,gss-group16-sha512-
+KexAlgorithms=curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha1
+HostKeyAlgorithms=ecdsa-sha2-nistp256,ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-256,rsa-sha2-256-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com,ssh-rsa,ssh-rsa-cert-v01@openssh.com
+ChallengeResponseAuthentication no
+GSSAPIAuthentication no
+UsePAM yes
+AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+AcceptEnv LC_IDENTIFIcatION LC_ALL LANGUAGE
+AcceptEnv XMODIFIERS
+X11Forwarding no
+AllowTCPForwarding yes
+AllowAgentForwarding yes
+ClientAliveCountMax 0
+ClientAliveInterval 900
+Banner /etc/issue
+Subsystem sftp /usr/libexec/openssh/sftp-server
+DenyGroups service
+
+Match User AWS_GDIT_Nessus,AWS_GDIT_Retina,AWS_IP360,nessus_service
+    PasswordAuthentication yes
+Match Group ansible
+    PasswordAuthentication no
+    GSSAPIAuthentication no
+    KerberosAuthentication no
+    PubkeyAuthentication yes

@@ -1,0 +1,19 @@
+---
+- name: Backing up /etc/ssh/sshd_config
+  shell: cp -prf /etc/ssh/sshd_config /etc/ssh/sshd_config.10-19-23
+  become: true
+  become_method: sudo
+
+- name: Update SSH Configuration using Template
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+  become: true
+  become_method: sudo
+
+- name: Restarting sshd service
+  become: yes
+  become_user: root
+  ansible.builtin.service:
+    name: sshd
+    state: restarted

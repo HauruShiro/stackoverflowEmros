@@ -1,0 +1,8 @@
+---
+- hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: "Copy Template of ssh config to target"
+      include_role:
+        name: 01TechTicket
