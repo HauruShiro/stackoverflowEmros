@@ -16,11 +16,11 @@ An Ansible role is organized into three main directories:
 Here is an example of an Ansible role that installs the Apache web server:
 
 
-roles/apache
-├── tasks
-│   └── main.yml
-└── handlers
-    └── restart_apache.yml
+roles/apache:
+    ├── tasks:
+        │   └── main.yml
+    └── handlers:
+        └── restart_apache.yml
 
 
 The `tasks` directory contains the `main.yml` file, which contains the tasks that will be executed to install Apache. This file contains the following tasks:
